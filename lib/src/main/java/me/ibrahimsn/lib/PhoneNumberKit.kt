@@ -103,7 +103,7 @@ class PhoneNumberKit private constructor(
 
     private fun setCountry(country: Country) {
         val formattedNumber = proxy.formatPhoneNumber(
-            proxy.getExampleNumber(country.iso2)
+            proxy.getExampleNumberOfMaxLength(country.iso2)
         )
         val pattern = CountryPattern.create(
             formattedNumber.orEmpty()
