@@ -51,6 +51,25 @@ internal class Proxy(context: Context) {
         }
     }
 
+    /**
+     * Provides an example phone number of max length according to country iso2 code
+     *
+     * A workaround since PhoneNumberUtil doesn't provide any information about possible lengths
+     */
+    fun getExampleNumberOfMaxLength(iso2: String?): Phonenumber.PhoneNumber? {
+        getExampleNumber(iso2)?.let {
+            it.nationalNumber = it.nationalNumber
+                .toString()
+                .padEnd(15, '0')
+                .toLong()
+            phoneUtil.truncateTooLongNumber(it)
+
+            return it
+        }
+
+        return null
+    }
+
     fun validateNumber(number: String?, countryCode: String?): Boolean {
         return try {
             val p = parsePhoneNumber(number, countryCode)
