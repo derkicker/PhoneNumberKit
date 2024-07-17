@@ -62,6 +62,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
 
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'io.michaelrocks:libphonenumber-android:8.12.37'
+    implementation 'io.michaelrocks:libphonenumber-android:8.13.35'
     implementation 'com.github.RedMadRobot:input-mask-android:6.1.0'
 }

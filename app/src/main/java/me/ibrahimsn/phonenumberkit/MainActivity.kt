@@ -3,6 +3,7 @@ package me.ibrahimsn.phonenumberkit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.widget.addTextChangedListener
 import me.ibrahimsn.lib.PhoneNumberKit
 import me.ibrahimsn.phonenumberkit.databinding.ActivityMainBinding
 
@@ -27,6 +28,14 @@ class MainActivity : AppCompatActivity() {
             activity = this,
             searchEnabled = true
         )
+
+        binding.editText.addTextChangedListener {
+            if (!phoneNumberKit.isValid) {
+                binding.textField.error = "Invalid"
+            } else {
+                binding.textField.error = null
+            }
+        }
 
         // Provides example phone number for given country iso2 code
         val exampleNumber = phoneNumberKit.getExampleNumber("tr")
